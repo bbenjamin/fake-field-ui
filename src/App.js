@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import FieldUiRoot from "./components/FieldUiRoot";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+
+
+const theme = createTheme({
+  components: {
+    MuiTreeItem: {
+      styleOverrides: {
+        content: {
+          fontSize: '2rem',
+          paddingTop: '.5rem',
+          paddingBottom: '.5rem',
+        },
+        label: {
+          fontSize: '1.2rem',
+        }
+      },
+    },
+  },
+});
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme} >
+        <Container>
+          <FieldUiRoot />
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }
-
-export default App;
